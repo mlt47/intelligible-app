@@ -10,6 +10,11 @@ export const unsubscribe = (callback) => {
     subscribers.splice(callbackIndex, 1);
 };
 
-webgazer.setGazeListener(function renderLoop(data, elapsedTime) {
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+webgazer.setGazeListener(async (data, elapsedTime) => {
     subscribers.map(subscriber => subscriber(data, elapsedTime));
+    await sleep(500);
 }).begin();

@@ -11103,7 +11103,7 @@ function store_points(x, y, k) {
     }
 
 
-    //PUBLIC FUNCTIONS - DEBUG
+    //PUBLIC FUNCTIONS - LOG_RENDER
 
     /**
      * Returns if the browser is compatible with webgazer

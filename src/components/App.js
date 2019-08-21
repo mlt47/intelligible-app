@@ -1,5 +1,4 @@
 import React from 'react';
-import '../css/App.css';
 import {Word} from './Word';
 
 export const App = () => {

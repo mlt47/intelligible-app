@@ -1,0 +1,4 @@
+
+"Misled by treacherous guides they were ambuscaded in dense forest."
+
+[[('Misled', 0), []], [('by', 0), []], [('treacherous', 0.958069), [('dangerous', 0.3212147355079651)]], [('guides', 0.76369715), []], [('they', 0), []], [('were', 0), []], [('ambuscaded', 0.9404559), []], [('in', 0), []], [('dense', 0.8684557), [('thick', 0.4692176282405853)]], [('forest', 0.6142403), [('woodland', 0.6556662321090698)]], [('.', 0), []]]

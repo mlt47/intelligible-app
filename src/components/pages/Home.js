@@ -7,7 +7,7 @@ import {ShowLoading} from "../elements/ShowLoading";
 
 export const Home = () => {
     const [docs, setDocs] = useState(null);
-    useEffect(() => {setDocs(api.docs.get())}, []);
+    useEffect(() => {setDocs(api.docs.getSummaries())}, []);
 
     LOG_RENDER && console.log("Render Home");
     return <React.Fragment>

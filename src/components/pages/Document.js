@@ -1,20 +1,17 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {Word} from "../elements/Word";
-import * as RS from "reactstrap";
 import {LOG_RENDER} from "../../services/constants";
+import {ShowLoading} from "../elements/ShowLoading";
+import {api} from "../../services/api";
 
 export const Document = ({match: {params: {documentId}}}) => {
-    const text = "A sample sentence for eye tracking";
+    const [processedDoc, setProcessedDoc] = useState(null);
+    useEffect(() => {setProcessedDoc(api.docs.get(documentId))}, [documentId]);
 
     LOG_RENDER && console.log("Render Document");
-    return <React.Fragment>
-        <h1>Document: {documentId}</h1>
-        <RS.Row>
-            <RS.Col>{
-                text.split(" ").map((word, index) => <React.Fragment key={`${word}-${index}`}>
-                    <Word word={word} />{" "}
-                </React.Fragment>)
-            }</RS.Col>
-        </RS.Row>
-    </React.Fragment>;
+    return <ShowLoading until={processedDoc} thenRender={processedDoc => <div>
+        {processedDoc.map((word, index) => <React.Fragment key={`${word.word}-${index}`}>
+            <Word word={word} />{" "}
+        </React.Fragment>)}
+    </div>} />;
 };

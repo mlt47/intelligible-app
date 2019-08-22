@@ -11,6 +11,9 @@ export const Home = () => {
 
     LOG_RENDER && console.log("Render Home");
     return <React.Fragment>
+        <p className="text-center mt-5 mb-4 pt-1 pb-3">
+            Pick or upload a document that you would like to read and we'll simplify the language for you!
+        </p>
         <RS.ListGroup>
             <ShowLoading until={docs} thenRender={(docs) => {
                 return docs.map((doc, index) => <RS.ListGroupItem key={`${doc.id}-${index}`}>
@@ -24,6 +27,9 @@ export const Home = () => {
                     </RS.ListGroupItemText>
                 </RS.ListGroupItem>);
             }} />
+            <RS.Button color="primary text-dark" block onClick={() => window.alert("This feature is not yet implemented 🙂")}>
+                <strong>Add a new file</strong>
+            </RS.Button>
         </RS.ListGroup>
     </React.Fragment>;
 };

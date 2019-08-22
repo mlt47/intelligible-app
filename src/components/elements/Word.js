@@ -3,7 +3,7 @@ import {LOG_RENDER} from "../../services/constants";
 
 const descendingByDifficulty = (a, b) => a.difficulty < b.difficulty ? 1 : a.difficulty > b.difficulty ? -1 : 0;
 
-export const Word = ({word, difficultyThreshold}) => {
+export const Word = ({word, difficultyThreshold, setDifficultyThreshold}) => {
     const wordHistory = useRef(word.word);
 
     let wordToDisplay = word;
@@ -19,5 +19,12 @@ export const Word = ({word, difficultyThreshold}) => {
     }
 
     LOG_RENDER && console.log(`Render word [${word.word}]`);
-    return <span className={wordChange ? "bg-warning px-2" : "px-2"}>{wordToDisplay.word}</span>
+    return <React.Fragment>
+        <span
+            className={wordChange ? "highlight" : ""} title="Click to simplify"
+            onClick={() => setDifficultyThreshold(wordToDisplay.difficulty - 0.1)}
+        >
+            {wordToDisplay.word}
+        </span>
+    </React.Fragment>
 };

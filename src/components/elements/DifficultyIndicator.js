@@ -4,14 +4,11 @@ import * as RS from "reactstrap";
 
 export const DifficultyIndicator = ({difficultyThreshold, setDifficultyThreshold}) => {
     LOG_RENDER && console.log("Render difficulty indicator");
-    return <div className="difficulty-indicator my-4">
-        <RS.Label htmlFor="range" className="mr-3">Difficulty:</RS.Label>
+    return <div className="difficulty-indicator">
+        <RS.Label htmlFor="range" className="mr-3 mb-0">English level:</RS.Label>
         <input
             id="range" type="range" min="0" max="1" step="0.1"
             value={difficultyThreshold} onChange={(event) => setDifficultyThreshold(event.target.value)}
         />
-        {/*<span id="output">*/}
-        {/*    {difficultyThreshold}*/}
-        {/*</span>*/}
     </div>;
 };

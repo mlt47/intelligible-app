@@ -14,7 +14,8 @@ export const Document = withRouter(({difficultyThreshold, setDifficultyThreshold
     return <RS.Card>
         <RS.CardBody>
             <ShowLoading until={processedDoc} thenRender={processedDoc => <div>
-                {processedDoc.map((word, index) => <React.Fragment key={`${word.word}-${index}`}>
+                <h1>{processedDoc.title}</h1>
+                {processedDoc.doc.map((word, index) => <React.Fragment key={`${word.word}-${index}`}>
                     {![".", ",", ":", ";"].includes(word.word) && " "}
                     <Word word={word} difficultyThreshold={difficultyThreshold} setDifficultyThreshold={setDifficultyThreshold} />
                 </React.Fragment>)}

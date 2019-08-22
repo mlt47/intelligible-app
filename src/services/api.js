@@ -11,7 +11,7 @@ export const api = {
     docs: {
         get: (id) => {
             const doc = allDocs[id];
-            return (doc && doc.processedDoc) ? doc.processedDoc : NOT_FOUND;
+            return (doc && doc.processedDoc) ? {title: doc.title, doc: doc.processedDoc} : NOT_FOUND;
         },
         getSummaries: () => {
             return Object.values(allDocs).map(({id, title, summary}, index) => ({id, title, summary}));

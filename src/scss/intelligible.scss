@@ -1,0 +1,19 @@
+$primary: #00b894;
+$secondary: #ffc53e;
+
+@import "~bootstrap/scss/bootstrap";
+@import "difficulty-indicator";
+
+.highlight {
+  background-color: $primary;
+  //animation: color-me-in 3s;
+}
+
+@keyframes color-me-in {
+  0% {
+    background: $primary;
+  }
+  100% {
+    background: none;
+  }
+}

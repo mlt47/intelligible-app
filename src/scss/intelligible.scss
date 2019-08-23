@@ -4,18 +4,12 @@ $secondary: #ffc53e;
 @import "~bootstrap/scss/bootstrap";
 @import "difficulty-indicator";
 
-.highlight {
+.highlighted {
   background-color: $primary;
-  //animation: color-me-in 3s;
 }
-
-@keyframes color-me-in {
-  0% {
-    background: $primary;
-  }
-  100% {
-    background: none;
-  }
+.not-highlighted {
+  transition: background-color 3s ease;
+  background: none;
 }
 
 .underline {

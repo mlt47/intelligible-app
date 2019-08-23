@@ -23,7 +23,7 @@ export const Word = ({word, difficultyThreshold, setDifficultyThreshold, eyeTrac
     LOG_RENDER && console.log(`Render word [${word.word}]`);
     return <span className={eyeTracking && lookingAt ? "underline" : ""}>
         <span
-            className={wordChange ? "highlight" : ""} title="Click to simplify" ref={areaOfInterestRef}
+            className={wordChange ? "highlighted" : "not-highlighted"} title="Click to simplify" ref={areaOfInterestRef}
             onClick={() => setDifficultyThreshold(wordToDisplay.difficulty - 0.1)}
         >
             {wordToDisplay.word}

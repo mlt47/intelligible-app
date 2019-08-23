@@ -20,7 +20,7 @@ export const App = () => {
                     </RS.NavbarBrand>
                     <div className="d-flex align-items-center">
                         <DifficultyIndicator difficultyThreshold={difficultyThreshold} setDifficultyThreshold={setDifficultyThreshold} />
-                        <span className="ml-2" onClick={() => setEyeTracking(!eyeTracking)}>{eyeTracking ? "👀" : "😆"}</span>
+                        <span className="ml-2" onClick={() => setEyeTracking(!eyeTracking)}>{eyeTracking ? "🙄" : "😆"}</span>
                     </div>
                 </RS.Navbar>
             </header>
@@ -28,7 +28,7 @@ export const App = () => {
                 <RS.Container className="my-4">
                     <Switch>
                         <Route exact path="/(index)?" component={Home} />
-                        <Route path="/documents/:documentId" render={() => Document({difficultyThreshold, setDifficultyThreshold})} />
+                        <Route path="/documents/:documentId" render={() => Document({difficultyThreshold, setDifficultyThreshold, eyeTracking})} />
                         <Route component={NotFound} />
                     </Switch>
                 </RS.Container>

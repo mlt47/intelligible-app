@@ -3,8 +3,14 @@ import {useRef, useEffect, useState} from "react";
 const OFFSET = {x:20, y:20};
 window.webgazer.setGazeListener(async (data, elapsedTime) => {
     subscribers.map(subscriber => subscriber(data, elapsedTime));
-    // await sleep(500);
-}).begin();
+}).begin().showVideo(0).showFaceOverlay(0).showFaceFeedbackBox(0);
+
+export const showEyeTracker = (webgazer) => {
+    webgazer.showPredictionPoints(1).showVideo(1).showFaceOverlay(1).showFaceFeedbackBox(1).setVideoViewerSize(200, 150);
+};
+export const hideEyeTracker = (webgazer) => {
+    webgazer.showPredictionPoints(0).showVideo(0).showFaceOverlay(0).showFaceFeedbackBox(0);
+};
 
 const subscribers = [];
 
@@ -16,10 +22,6 @@ export const unsubscribe = (callback) => {
     const callbackIndex = subscribers.indexOf(callback);
     subscribers.splice(callbackIndex, 1);
 };
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 export const useAreaOfInterest = (deps) => {
     const elementOfInterest = useRef(null);
@@ -35,7 +37,7 @@ export const useAreaOfInterest = (deps) => {
                     boundingBox.bottom - OFFSET.y <= data.y && data.y <= boundingBox.top + OFFSET.y
                 ) {
                     setLookingAt(true);
-                } else if (lookingAt) {
+                } else {
                     setLookingAt(false);
                 }
             }

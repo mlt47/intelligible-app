@@ -4,7 +4,7 @@ import {useAreaOfInterest} from "../../services/webgazer";
 
 const descendingByDifficulty = (a, b) => a.difficulty < b.difficulty ? 1 : a.difficulty > b.difficulty ? -1 : 0;
 
-export const Word = ({word, difficultyThreshold, setDifficultyThreshold}) => {
+export const Word = ({word, difficultyThreshold, setDifficultyThreshold, eyeTracking}) => {
     const [areaOfInterestRef, lookingAt] = useAreaOfInterest([word.word]);
     const wordHistory = useRef(word.word);
 
@@ -21,7 +21,7 @@ export const Word = ({word, difficultyThreshold, setDifficultyThreshold}) => {
     }
 
     LOG_RENDER && console.log(`Render word [${word.word}]`);
-    return <span className={lookingAt ? "bg-warning" : ""}>
+    return <span className={eyeTracking && lookingAt ? "underline" : ""}>
         <span
             className={wordChange ? "highlight" : ""} title="Click to simplify" ref={areaOfInterestRef}
             onClick={() => setDifficultyThreshold(wordToDisplay.difficulty - 0.1)}

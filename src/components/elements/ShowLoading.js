@@ -3,7 +3,7 @@ import * as RS from "reactstrap";
 import {NotFound} from "../pages/NotFound";
 import {NOT_FOUND} from "../../services/constants";
 
-const defaultPlaceholder = <div className="w-100 text-center">
+const defaultPlaceholder = <div className="w-100 text-center pb-5">
     <h2 className="pt-5 pb-2">Loading...</h2>
     <RS.Spinner color="primary" />
 </div>;

@@ -1,17 +1,19 @@
-import React, {useRef} from "react";
+import React, {useState, useRef, useMemo} from "react";
 import {LOG_RENDER} from "../../services/constants";
 import {useAreaOfInterest} from "../../services/webgazer";
 
 const descendingByDifficulty = (a, b) => a.difficulty < b.difficulty ? 1 : a.difficulty > b.difficulty ? -1 : 0;
 
-export const Word = ({word, difficultyThreshold, setDifficultyThreshold, eyeTracking}) => {
+export const Word = ({word, rest, difficultyThreshold, eyeTracking}) => {
     const [areaOfInterestRef, lookingAt] = useAreaOfInterest([word.word]);
     const wordHistory = useRef(word.word);
+    const [localDifficulty, setLocalDifficulty] = useState(difficultyThreshold + 0.01);
+    useMemo(() => {setLocalDifficulty(difficultyThreshold + 0.01)}, [difficultyThreshold]);
 
     let wordToDisplay = word;
-    if (word.difficulty > parseFloat(difficultyThreshold) && word.synonyms.length !== 0) {
+    if (word.difficulty > localDifficulty && word.synonyms.length !== 0) {
         const sortedSynonyms = word.synonyms.sort(descendingByDifficulty);
-        const filteredSynonyms = sortedSynonyms.filter((a) => a.difficulty < parseFloat(difficultyThreshold));
+        const filteredSynonyms = sortedSynonyms.filter((a) => a.difficulty < localDifficulty);
         wordToDisplay = filteredSynonyms.length !== 0 ? filteredSynonyms[0] : sortedSynonyms[sortedSynonyms.length - 1];
     }
 
@@ -20,13 +22,24 @@ export const Word = ({word, difficultyThreshold, setDifficultyThreshold, eyeTrac
         wordHistory.current = wordToDisplay.word;
     }
 
+    const [nextWord, ...nextRest] = rest;
     LOG_RENDER && console.log(`Render word [${word.word}]`);
-    return <span className={eyeTracking && lookingAt ? "underline" : ""}>
-        <span
-            className={wordChange ? "highlighted" : "not-highlighted"} title="Click to simplify" ref={areaOfInterestRef}
-            onClick={() => setDifficultyThreshold(wordToDisplay.difficulty - 0.1)}
-        >
-            {wordToDisplay.word}
-        </span>
+    return <span>
+        {nextWord ?
+            <span>
+                <span className={eyeTracking && lookingAt ? "underline" : ""}>
+                    {![".", ",", ":", ";"].includes(word.word) && " "}
+                    <span
+                        className={wordChange ? "highlighted" : "not-highlighted"} title="Click to simplify" ref={areaOfInterestRef}
+                        onClick={() => setLocalDifficulty(wordToDisplay.difficulty - 0.1)}
+                    >
+                        {wordToDisplay.word}
+                    </span>
+                </span>
+                <Word word={nextWord} rest={nextRest} difficultyThreshold={localDifficulty} eyeTracking={eyeTracking} />
+            </span>
+            :
+            <></>
+        }
     </span>
 };

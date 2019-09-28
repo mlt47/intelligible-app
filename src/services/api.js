@@ -2,9 +2,9 @@ import {exampleDoc} from "../documents/example";
 import {NOT_FOUND} from "./constants";
 
 const allDocs = {
-    example: {id: "example", title: "Example sentence", summary: "Try the test example sentence", processedDoc: exampleDoc},
-    dogs: {id: "dogs", title: "Dogs", summary: "Read up about dogs"},
-    menageries: {id: "menageries", title: "Menageries", summary: "Find out about one of Russel's favourite words - menagerie"}
+    example: {id: "example", title: "Example sentence (repeated)", summary: "Try the test example sentence", processedDoc: exampleDoc},
+    dogs: {id: "cae", title: "Cambridge Assessment English", summary: "Cambridge Assessment English, or University of Cambridge English Language Assessment, is one of three exam boards which form the Cambridge Assessment Group, a non-teaching department of the University of Cambridge."},
+    menageries: {id: "menageries", title: "Menageries", summary: "A menagerie is a collection of captive animals, frequently exotic, kept for display; or the place where such a collection is kept, a precursor to the modern zoological garden."}
 };
 
 export const api = {

@@ -7,7 +7,7 @@ import {api} from "../../services/api";
 import {withRouter} from "react-router";
 import {showEyeTracker, hideEyeTracker} from "../../services/webgazer";
 
-export const Document = withRouter(({difficultyThreshold, setDifficultyThreshold, eyeTracking, match: {params: {documentId}}}) => {
+export const Document = withRouter(({difficultyThreshold, eyeTracking, match: {params: {documentId}}}) => {
     const [processedDoc, setProcessedDoc] = useState(null);
     useEffect(() => {setProcessedDoc(api.docs.get(documentId))}, [documentId]);
     useEffect(() => {
@@ -16,15 +16,14 @@ export const Document = withRouter(({difficultyThreshold, setDifficultyThreshold
     }, [eyeTracking]);
 
     LOG_RENDER && console.log("Render Document");
+    const [word, ...rest] = processedDoc ? processedDoc.doc : [""];
+    debugger;
     return <RS.Card>
         <RS.CardBody>
             <ShowLoading until={processedDoc} thenRender={processedDoc => <div>
                 <h1>{processedDoc.title}</h1>
                 <div className="increase-spacing">
-                    {processedDoc.doc.map((word, index) => <React.Fragment key={`${word.word}-${index}`}>
-                        {![".", ",", ":", ";"].includes(word.word) && " "}
-                        <Word word={word} difficultyThreshold={difficultyThreshold} setDifficultyThreshold={setDifficultyThreshold} eyeTracking={eyeTracking} />
-                    </React.Fragment>)}
+                    <Word word={word} rest={rest} difficultyThreshold={difficultyThreshold} eyeTracking={eyeTracking} />
                 </div>
             </div>} />
         </RS.CardBody>

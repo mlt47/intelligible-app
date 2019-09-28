@@ -14,7 +14,7 @@ export const Home = () => {
         <p className="text-center mt-5 mb-4 pt-1 pb-3">
             Pick or upload a document that you would like to read and we'll simplify the language for you!
         </p>
-        <RS.ListGroup>
+        <RS.ListGroup className="mb-5">
             <ShowLoading until={docs} thenRender={(docs) => {
                 return docs.map((doc, index) => <RS.ListGroupItem key={`${doc.id}-${index}`}>
                     <RS.ListGroupItemHeading>

@@ -28,7 +28,7 @@ export const App = () => {
                 <RS.Container className="my-4">
                     <Switch>
                         <Route exact path="/(index)?" component={Home} />
-                        <Route path="/documents/:documentId" render={() => Document({difficultyThreshold, setDifficultyThreshold, eyeTracking})} />
+                        <Route path="/documents/:documentId" render={() => Document({difficultyThreshold, eyeTracking})} />
                         <Route component={NotFound} />
                     </Switch>
                 </RS.Container>

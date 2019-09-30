@@ -1,15 +1,17 @@
 import {useRef, useEffect, useState} from "react";
 
 const OFFSET = {x:20, y:20};
-window.webgazer.setGazeListener(async (data, elapsedTime) => {
-    subscribers.map(subscriber => subscriber(data, elapsedTime));
-}).begin().showVideo(0).showFaceOverlay(0).showFaceFeedbackBox(0);
+// window.webgazer.setGazeListener(async (data, elapsedTime) => {
+//     subscribers.map(subscriber => subscriber(data, elapsedTime));
+// }).begin().showVideo(0).showFaceOverlay(0).showFaceFeedbackBox(0);
 
 export const showEyeTracker = (webgazer) => {
     webgazer.showPredictionPoints(1).showVideo(1).showFaceOverlay(1).showFaceFeedbackBox(1).setVideoViewerSize(200, 150);
 };
 export const hideEyeTracker = (webgazer) => {
-    webgazer.showPredictionPoints(0).showVideo(0).showFaceOverlay(0).showFaceFeedbackBox(0);
+    if (webgazer) {
+        webgazer.showPredictionPoints(0).showVideo(0).showFaceOverlay(0).showFaceFeedbackBox(0);
+    }
 };
 
 const subscribers = [];

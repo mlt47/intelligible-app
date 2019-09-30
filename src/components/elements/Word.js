@@ -26,7 +26,7 @@ export const Word = ({word, rest, difficultyThreshold, eyeTracking}) => {
     LOG_RENDER && console.log(`Render word [${word.word}]`);
     return <span>
         {nextWord ?
-            <span>
+            <span style={{cursor: "pointer"}}>
                 <span className={eyeTracking && lookingAt ? "underline" : ""}>
                     {![".", ",", ":", ";"].includes(word.word) && " "}
                     <span

@@ -3,8 +3,8 @@ import {NOT_FOUND} from "./constants";
 
 const allDocs = {
     example: {id: "example", title: "Example sentence (repeated)", summary: "Try the test example sentence", processedDoc: exampleDoc},
-    dogs: {id: "cae", title: "Cambridge Assessment English", summary: "Cambridge Assessment English, or University of Cambridge English Language Assessment, is one of three exam boards which form the Cambridge Assessment Group, a non-teaching department of the University of Cambridge."},
-    menageries: {id: "menageries", title: "Menageries", summary: "A menagerie is a collection of captive animals, frequently exotic, kept for display; or the place where such a collection is kept, a precursor to the modern zoological garden."}
+    cae: {id: "cae", title: "Cambridge Assessment English", summary: "Cambridge Assessment English, or University of Cambridge English Language Assessment, is one of three exam boards which form the Cambridge Assessment Group, a non-teaching department of the University of Cambridge."},
+    computer_lab: {id: "computer_lab", title: "Department of Computer Science and Technology", summary: "The Department of Computer Science and Technology, formerly the Computer Laboratory, is the computer science department of the University of Cambridge. The current head of department is Professor Ann Copestake."}
 };
 
 export const api = {

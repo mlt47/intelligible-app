@@ -17,7 +17,6 @@ export const Document = withRouter(({difficultyThreshold, eyeTracking, match: {p
 
     LOG_RENDER && console.log("Render Document");
     const [word, ...rest] = processedDoc ? processedDoc.doc : [""];
-    debugger;
     return <RS.Card>
         <RS.CardBody>
             <ShowLoading until={processedDoc} thenRender={processedDoc => <div>

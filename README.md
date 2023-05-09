@@ -1,3 +1,5 @@
+# ⚠️ This project is now archived and will not receive security updates ⚠️
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
